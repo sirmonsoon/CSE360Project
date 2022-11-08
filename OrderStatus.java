@@ -71,7 +71,7 @@ public class OrderStatus extends VBox {
 		gp.setHgap(10);
 		
 		//will show the sun devils pizza logo on the top left corner
-		Image image = new Image(new FileInputStream("C:\\Users\\eduar\\Desktop\\pizza.png"));
+		Image image = new Image(new FileInputStream("src\\application\\pizza.png"));
 		ImageView view = new ImageView(image);
 		view.setFitHeight(100); 
 	    view.setFitWidth(100);
