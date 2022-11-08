@@ -22,9 +22,9 @@ import javafx.animation.Timeline;
 
 public class OrderStatus extends VBox {
 	
-	private TextArea order;
+	public TextArea order;
 	private Label st;
-	private Label status;
+	public Label status;
 	
 
 	
