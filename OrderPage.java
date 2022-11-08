@@ -32,7 +32,7 @@ public class OrderPage extends VBox{
 	private int checkSignIn;
 	
 	
-	private OrderStatus stat;
+	public OrderStatus stat;
 
 	public OrderPage(OrderStatus p) throws FileNotFoundException {
 		// calls the OrderStatus class in order for it to be updated
