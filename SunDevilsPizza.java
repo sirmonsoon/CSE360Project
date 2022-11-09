@@ -19,12 +19,11 @@ package application;
 				
 				OS = new OrderStatus();
 				OP = new OrderPage(OS);
-				SI = new SignInPage();
+				SI = new SignInPage(OP);
 				
 				StackPane root = new StackPane();
 				
 				TabPane tabPane = new TabPane();
-				
 
 			    Tab tab1 = new Tab();
 			    tab1.setText("Order Page");
@@ -35,20 +34,23 @@ package application;
 			    tab2.setContent(OS);
 			    
 			    Tab tab3 = new Tab();
-			    
 			    tab3.setText("View Account");
 			    tab3.setContent(SI);
 			    
 			    tabPane.getSelectionModel().select(0);
+
 			    tabPane.getTabs().addAll(tab1, tab2, tab3);
-			    root.getChildren().add(tabPane);
 			    
+			    root.getChildren().add(tabPane);
+
 
 			    
 				Scene scene = new Scene(root,700,500);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());				
 				primaryStage.setScene(scene);
 				primaryStage.show();
+
+
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
