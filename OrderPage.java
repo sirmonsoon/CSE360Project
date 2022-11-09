@@ -42,7 +42,10 @@ public class OrderPage extends VBox{
 		
 		//choice box that creates a drop down menu
 		cb = new ChoiceBox(FXCollections.observableArrayList(
-			    "Pepperoni", "Cheese", "Veggi"));
+			    "Select Pizza", "Pepperoni", "Cheese", "Veggi"));
+		
+		cb.getSelectionModel().selectFirst();
+		
 	
 		//gridpane that will hold 2 vbox's
 		GridPane gp1 = new GridPane();
@@ -90,7 +93,7 @@ public class OrderPage extends VBox{
 		gp2.add(text, 0, 1);
 		
 		//will show the sun devils pizza logo on the top left corner
-		Image image = new Image(new FileInputStream("C:\\Users\\eduar\\Desktop\\pizza.png"));
+		Image image = new Image(new FileInputStream("src\\application\\pizza.png"));
 		ImageView view = new ImageView(image);
 		view.setFitHeight(100); 
 	    view.setFitWidth(100);
@@ -132,18 +135,22 @@ public class OrderPage extends VBox{
 			a = "Veggi";
 		}
 		
+		order = "You selected " + a + " with extra ";
+		text.setText(order);
+		
 		//check if the extra topping are selected
 		if(addMushrooms.isSelected()==true) {
 			b = "Mushrooms";
+			text.appendText(b + ", ");
 		}
 		if(addOlives.isSelected()==true) {
 			c = "Olives";
+			text.appendText(c + ", ");
 		}
 		if(addOnions.isSelected()==true) {
 			d = "Onions";
+			text.appendText(d);
 		}
-		order = "You selected " + a + " with extra " + b + c + d + "\n";
-		text.setText(order);
 	}
 	
 	public void updatePrice() { // similar to the Order function but generates the price of the pizza
@@ -176,7 +183,7 @@ public class OrderPage extends VBox{
 		
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 		String s = String.valueOf(money.format(totalPrice));
-		text.appendText("Total Price: " + s);
+		text.appendText("\nTotal Price: " + s);
 	}
 	
 	public void signIn() {
@@ -196,12 +203,16 @@ public class OrderPage extends VBox{
 			if(checkSignIn == 0) {
 				text.setText("Please sign in to Make an Order");
 			}
+			String value = (String) cb.getSelectionModel().getSelectedItem();
+			if(value.equals("Select Pizza")) {
+				text.setText("Please select a pizza type!");
+			}
 			else { // will call functions upon the press of the order button
 				Order();
 				updatePrice();
+				// will updated the order status page
+				stat.updatepage(order);
 			}
-			// will updated the order status page
-			stat.updatepage(order);
 			
 		}
 	}
