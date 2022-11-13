@@ -175,10 +175,13 @@ public class SignInPage extends VBox {
 					    }
 						
 						user(fName, lName, email, asuID);
+						
 					}
 					else {
 						error.setText("User not Found");
 					}
+					
+					opage.updateSignIn(loggedIn);
 					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block

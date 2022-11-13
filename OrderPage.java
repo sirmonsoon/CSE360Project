@@ -38,7 +38,7 @@ public class OrderPage extends VBox{
 		// calls the OrderStatus class in order for it to be updated
 		stat = p;
 		
-		checkSignIn = 1;
+		checkSignIn = 0;
 		
 		//choice box that creates a drop down menu
 		cb = new ChoiceBox(FXCollections.observableArrayList(
@@ -131,7 +131,7 @@ public class OrderPage extends VBox{
 		if(value.equalsIgnoreCase("Cheese")) {
 			a = "Cheese";
 		}
-		if(value.equalsIgnoreCase("Vegatable")) {
+		if(value.equalsIgnoreCase("Veggi")) {
 			a = "Veggi";
 		}
 		
@@ -166,7 +166,7 @@ public class OrderPage extends VBox{
 		if(value.equalsIgnoreCase("Cheese")) {
 			a = 9;
 		}
-		if(value.equalsIgnoreCase("Vegatable")) {
+		if(value.equalsIgnoreCase("Veggi")) {
 			a = 10;
 		}
 		if(addMushrooms.isSelected()==true) {
@@ -192,20 +192,21 @@ public class OrderPage extends VBox{
 		}
 	}
 	
-	public void pageLinker() {
-		
+	public void updateSignIn(int u) {
+		checkSignIn = u;
 	}
 	
 
 	private class ButtonHandler implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event) {
 			//checks if user is logged in
-			if(checkSignIn == 0) {
-				text.setText("Please sign in to Make an Order");
-			}
 			String value = (String) cb.getSelectionModel().getSelectedItem();
 			if(value.equals("Select Pizza")) {
 				text.setText("Please select a pizza type!");
+			}
+			
+			if(checkSignIn == 0) {
+				text.setText("Please sign in to Make an Order");
 			}
 			else { // will call functions upon the press of the order button
 				Order();
