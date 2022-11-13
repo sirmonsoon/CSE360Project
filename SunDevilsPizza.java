@@ -39,11 +39,9 @@ package application;
 			    
 			    tabPane.getSelectionModel().select(0);
 
-			    tabPane.getTabs().addAll(tab1, tab2, tab3);
+			    tabPane.getTabs().addAll(tab3, tab1, tab2);
 			    
 			    root.getChildren().add(tabPane);
-
-
 			    
 				Scene scene = new Scene(root,700,500);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());				
